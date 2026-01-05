@@ -9,13 +9,13 @@ function listarApolices() {
     console.clear();
     console.log("=== LISTA DE APÓLICES ===\n");
 
-    if (dados.apolice.length === 0) {
+    if (dados.apolices.length === 0) {
         console.log("Não existem apólices registadas.");
         return;
     }
 
-    for (let i = 0; i < dados.apolice.length; i++) {
-        let ap = dados.apolice[i];
+    for (let i = 0; i < dados.apolices.length; i++) {
+        let ap = dados.apolices[i];
 
         console.log("ID: " + ap.id);
         console.log("Seguradora ID: " + ap.seguradoraId);
@@ -35,7 +35,7 @@ function inserirApolice() {
 
     let novaApolice = {};
 
-    novaApolice.id = dados.apolice.length + 1; 
+    novaApolice.id = dados.apolices[0].proximoId++; //???????
     novaApolice.seguradoraId = Number(prompt("ID da Seguradora: "));
     novaApolice.tomadorId = Number(prompt("ID do Tomador: "));
     novaApolice.seguradoId = Number(prompt("ID do Segurado: "));
@@ -46,7 +46,7 @@ function inserirApolice() {
     novaApolice.estadoId = Number(prompt("Estado ID: "));
     novaApolice.dataInicio = prompt("Data início (YYYY-MM-DD): ");
 
-    dados.apolice.push(novaApolice);
+    dados.apolices.push(novaApolice);
 
     console.log("\nApólice inserida com sucesso!");
 }
@@ -59,8 +59,8 @@ function removerApolice() {
     let id = Number(prompt("ID da apólice a remover: "));
     let index = -1;
 
-    for (let i = 0; i < dados.apolice.length; i++) {
-        if (dados.apolice[i].id === id) {
+    for (let i = 0; i < dados.apolices.length; i++) {
+        if (dados.apolices[i].id === id) {
             index = i;
             break;
         }
@@ -71,7 +71,7 @@ function removerApolice() {
         return;
     }
 
-    dados.apolice.splice(index, 1);
+    dados.apolices.splice(index, 1);
     console.log("Apólice removida com sucesso!");
 }
 
@@ -85,9 +85,9 @@ function atualizarApolice() {
     let id = Number(prompt("ID da apólice: "));
     let apolice = null;
 
-    for (let i = 0; i < dados.apolice.length; i++) {
-        if (dados.apolice[i].id === id) {
-            apolice = dados.apolice[i];
+    for (let i = 0; i < dados.apolices.length; i++) {
+        if (dados.apolices[i].id === id) {
+            apolice = dados.apolices[i];
             break;
         }
     }
@@ -98,21 +98,33 @@ function atualizarApolice() {
     }
 
     /*
-    console.log("====================================");
-    console.log(" Que campo quer atualizar? ");
-    console.log("====================================");
-    console.log("1 - seguradoraId");
-    console.log("2 - tomadorId");
-    console.log("3 - seguradoId");
-    console.log("4 - tipoSeguroId");
-    console.log("5 - valorSegurado");
-    console.log("6 - premio");
-    console.log("7 - periodicidadeId");
-    console.log("8 - estadoId");            check
-    console.log("9 - dataInicio");
-    console.log("0 - Voltar");
-*/
+    let opcao;
 
+    do {
+        console.clear();
+
+        console.log("====================================");
+        console.log(" Que campo quer atualizar? ");
+        console.log("====================================");
+        console.log("1 - seguradoraId");
+        console.log("2 - tomadorId");
+        console.log("3 - seguradoId");
+        console.log("4 - tipoSeguroId");
+        console.log("5 - valorSegurado");
+        console.log("6 - premio");
+        console.log("7 - periodicidadeId");
+        console.log("8 - estadoId");            check
+        console.log("9 - dataInicio");
+        console.log("0 - Voltar");
+
+        opcao = prompt("Opção: ");
+
+        if (opcao === "4") {
+            apolice.estadoId = Number(prompt("Novo Estado ID: "));
+            console.log("Estado atualizado com sucesso!");
+        }
+    } while (opcao !== "0");
+*/
     apolice.estadoId = Number(prompt("Novo Estado ID: "));
     console.log("Estado atualizado com sucesso!");
 }

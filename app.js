@@ -2,6 +2,7 @@ const prompt = require('prompt-sync')();
 const dashboard = require('./dashboard.js');
 const relatorios = require('./relatorios.js');
 const apolices = require('./apolices.js');
+const seguradoras = require('./seguradoras.js');
 
 
 let opcao;
@@ -21,10 +22,13 @@ do {
 
     if (opcao === "1") {
     menuApolices();
-}
-else if (opcao === "4") {
-    menuRelatorios();
-}
+    }
+    else if (opcao === "2") {
+        menuSeguradoras();
+    }
+    else if (opcao === "4") {
+        menuRelatorios();
+    }
 
 } while (opcao !== "0");
 
@@ -68,6 +72,43 @@ function menuApolices() {
     } while (opcao !== "0");
 }
 
+// 2 Seguradoras
+function menuSeguradoras() {
+    let opcao;
+
+    do {
+        console.clear();
+
+        console.log("====================================");
+        console.log(" GESTÃO DE SEGURADORAS ");
+        console.log("====================================");
+        console.log("1 - Listar Seguradoras");
+        console.log("2 - Inserir Seguradora");
+        console.log("3 - Atualizar Seguradora");
+        console.log("4 - Remover Seguradora");
+        console.log("0 - Voltar");
+
+        opcao = prompt("Opção: ");
+
+        if (opcao === "1") {
+            seguradoras.listarSeguradoras();
+            prompt("Prima ENTER para continuar...");
+        }
+       else if (opcao === "2") {
+            seguradoras.inserirSeguradora();
+            prompt("Prima ENTER para continuar...");
+        }
+        else if (opcao === "3") {
+            seguradoras.atualizarSeguradora();
+            prompt("Prima ENTER para continuar...");
+        }
+        else if (opcao === "4") {
+            seguradoras.removerSeguradora();
+            prompt("Prima ENTER para continuar...");
+        }
+
+    } while (opcao !== "0");
+}
 
 
 

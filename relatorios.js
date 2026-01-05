@@ -2,9 +2,9 @@
 const dados = require('./dados.js');
 const utils = require('./utils.js');
 
-const apolice = dados.apolice;
-const seguradora = dados.seguradora;
-const tipoSeguro = dados.tipoSeguro;
+const apolice = dados.apolices;
+const seguradora = dados.seguradoras;
+const tipoSeguro = dados.tipoSeguros;
 
 
 //Relatorio por tipo de seguro.
@@ -127,8 +127,8 @@ function relatorioEntidades() {
 
     let entidadesMostradas = [];
 
-    for (let i = 0; i < dados.apolice.length; i++) {
-        let ap = dados.apolice[i];
+    for (let i = 0; i < dados.apolices.length; i++) {
+        let ap = dados.apolices[i];
 
         // Estado ativa
         if (ap.estadoId !== 1) {
@@ -136,24 +136,13 @@ function relatorioEntidades() {
         }
 
         // TOMADOR
-        let tomador = dados.tomador.find(function(t) {  //Procura no array dados.tomador a pessoa cujo id é igual ao tomadorId da apólice
+        let tomador = dados.tomadores.find(function(t) {  //Procura no array dados.tomadores a pessoa cujo id é igual ao tomadorId da apólice
             return t.id === ap.tomadorId;
         });
 
         if (tomador && entidadesMostradas.indexOf("T" + tomador.id) === -1) {       //verifica se já foi mostrada
             mostrarEntidade(tomador);                                              //mostra a entidade
             entidadesMostradas.push("T" + tomador.id);                            //regista que já foi mostrada
-        }
-
-        // SEGURADO
-        let segurado = dados.segurado.find(function(s) {
-            return s.id === ap.seguradoId;
-        });
-
-        if (segurado && entidadesMostradas.indexOf("S" + segurado.id) === -1) {
-            
-            mostrarEntidade(segurado);
-            entidadesMostradas.push("S" + segurado.id);
         }
     }
 }

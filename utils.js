@@ -1,6 +1,6 @@
 const dados = require('./dados.js');
 
-const periodicidade = dados.periodicidade;
+const periodicidade = dados.periodicidades;
 
 
 //Gerar novo ID (para CRUD)

@@ -1,8 +1,8 @@
 const dados = require('./dados.js');
 
-const apolice = dados.apolice;
-const seguradora = dados.seguradora;
-const tipoSeguro = dados.tipoSeguro;
+const apolice = dados.apolices;
+const seguradora = dados.seguradoras;
+const tipoSeguro = dados.tipoSeguros;
 
 
 function mostrarDashboard() {

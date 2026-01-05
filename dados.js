@@ -1,16 +1,16 @@
 //(mudar para Classes :´( )
 
 
-const seguradora = [
-  { id: 1, nome: "Fidelidade" },
-  { id: 2, nome: "Allianz" },
+const seguradoras = [
+  //new this.seguradora(1, "Fidelidade"),
+  { id: 2, nome: "Allianz"},
   { id: 3, nome: "Generali"},
   { id: 4, nome: "Ageas"},
   { id: 5, nome: "Zurich"}
 ];
 
 
-const tomador = [ //juntar numa ENTIDADE c/ tomador e segurado???
+const tomadores = [ 
   {
     id: 1,
     nome: "João Silva",
@@ -21,19 +21,16 @@ const tomador = [ //juntar numa ENTIDADE c/ tomador e segurado???
   }
 ];
 
-const segurado = [
+const segurados = [
   {
     id: 1,
-    nome: "João Silva",
-    dataNascimento: "1985-06-12",
-    morada: "Lisboa",
-    telefone: "912345678",
-    email: "joao@email.pt"
+    identificacao: "Opel Astra",
+    data: "1995-06-12",
   }
 ];
 
 //principal
-const apolice = [
+const apolices = [
   {
     id: 1,
     seguradoraId: 1,
@@ -44,12 +41,13 @@ const apolice = [
     premio: 25,
     periodicidadeId: 1,
     estadoId: 1,
-    dataInicio: "2025-06-12"
+    dataInicio: "2025-06-12",
+    proximoId: 2
   }
 ];
 
 //dados estáticos
-const tipoSeguro = Object.freeze([ 
+const tipoSeguros = Object.freeze([ 
   { id: 1, descricao: "Saúde" },  
   { id: 2, descricao: "Vida" },
   { id: 3, descricao: "Acidentes de Trabalho" },
@@ -58,12 +56,12 @@ const tipoSeguro = Object.freeze([
   { id: 6, descricao: "Animal" },
 ]);
 
-const periodicidade = Object.freeze([
+const periodicidades = Object.freeze([
   { id: 1, descricao: "Mensal", multiplicadorAnual: 12 },
   { id: 2, descricao: "Anual", multiplicadorAnual: 1 }
 ]);
 
-const estado = Object.freeze([
+const estados = Object.freeze([
   { id: 1, descricao: "Ativa" },
   { id: 2, descricao: "Inativa" }
 ]);
@@ -73,11 +71,11 @@ const estado = Object.freeze([
 //exports
 
 module.exports = {
-  seguradora,
-  tomador,
-  segurado,
-  apolice,
-  tipoSeguro,
-  periodicidade,
-  estado,
+  seguradoras,
+  tomadores,
+  segurados,
+  apolices,
+  tipoSeguros,
+  periodicidades,
+  estados,
 };
