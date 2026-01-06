@@ -1,21 +1,29 @@
-//CRUD de Seguradoras
-
 const prompt = require('prompt-sync')();
-const dados = require('./dados.js');
+const Dados = require('./teste/dados.js');
 
+//import Dados from './teste/dados.js';
 
+class Seguradora{
+    static proximoId = 6;
+    constructor(nome){
+        this.id = 0;
+        this.nome = nome
+    }
+
+    
+//CRUD de Seguradoras
 //Read
-function listarSeguradoras() {
+listarSeguradoras() {
     console.clear();
     console.log("=== LISTA DE SEGURADORAS ===\n");
 
-    if (dados.seguradoras.length === 0) {
+    if (Dados.seguradoras.length === 0) {
         console.log("Não existem seguradoras registadas.");
         return;
     }
 
-    for (let i = 0; i < dados.seguradoras.length; i++) {
-        let sg = dados.seguradoras[i];
+    for (let i = 0; i < Dados.seguradoras.length; i++) {
+        let sg = Dados.seguradoras[i];
 
         console.log("ID: " + sg.id);
         console.log("NOME: " + sg.nome);
@@ -24,38 +32,38 @@ function listarSeguradoras() {
 }
 
 //Create
-function inserirSeguradora() {
+inserirSeguradora() {
     console.clear();
     console.log("=== INSERIR SEGURADORA ===\n");
 
-    let novaSeguradora = {};
 
-    novaSeguradora.id = dados.seguradoras[0].proximoId++; 
-    novaSeguradora.nome = prompt("Nome: ");
+        this.id = Seguradora.proximoId++;
+        this.nome = prompt("Nome: ");
+    console.log(this);   
 
-    dados.seguradoras.push(novaSeguradora);
+    Dados.seguradoras.push(this);
 
     console.log("\nSeguradora inserida com sucesso!");
 }
 
 
 //Delete
-function removerSeguradora() {
+removerSeguradora() {
     console.clear();
     console.log("=== REMOVER SEGURADORA ===\n");
 
     let id = Number(prompt("ID da seguradora a remover: "));
     let index = -1;
     
-     for (let i = 0; i < dados.apolices.length; i++) { //verificar se existem apolices ativas
-        if (dados.apolices[i].seguradoraId === id) {
+     for (let i = 0; i < Dados.apolices.length; i++) { //verificar se existem apolices ativas
+        if (Dados.apolices[i].seguradoraId === id) {
             console.log("Não é possível remover: existem apólices associadas.");
             return;
         }
     }
 
-    for (let i = 0; i < dados.seguradoras.length; i++) {
-        if (dados.seguradoras[i].id === id) {
+    for (let i = 0; i < Dados.seguradoras.length; i++) {
+        if (Dados.seguradoras[i].id === id) {
             index = i;
             break;
         }
@@ -66,22 +74,22 @@ function removerSeguradora() {
         return;
     }
 
-    dados.seguradoras.splice(index, 1);
+    Dados.seguradoras.splice(index, 1);
     console.log("Seguradora removida com sucesso!");
 }
     
 
 //Update 
-function atualizarSeguradora() {
+atualizarSeguradora() {
     console.clear();
     console.log("=== ATUALIZAR SEGURADORA ===\n");
 
     let id = Number(prompt("ID da Seguradora: "));
     let seguradora = null;
 
-    for (let i = 0; i < dados.seguradoras.length; i++) {
-        if (dados.seguradoras[i].id === id) {
-            seguradora = dados.seguradoras[i];
+    for (let i = 0; i < Dados.seguradoras.length; i++) {
+        if (Dados.seguradoras[i].id === id) {
+            seguradora = Dados.seguradoras[i];
             break;
         }
     }
@@ -96,11 +104,11 @@ function atualizarSeguradora() {
 }
 
 
+}
 
-//Exportações
-module.exports = {
-    listarSeguradoras,
-    inserirSeguradora,
-    removerSeguradora,
-    atualizarSeguradora
-};
+module.exports = Seguradora;
+
+
+
+
+

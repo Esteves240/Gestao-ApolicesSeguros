@@ -97,7 +97,6 @@ function atualizarApolice() {
         return;
     }
 
-    /*
     let opcao;
 
     do {
@@ -113,20 +112,59 @@ function atualizarApolice() {
         console.log("5 - valorSegurado");
         console.log("6 - premio");
         console.log("7 - periodicidadeId");
-        console.log("8 - estadoId");            check
+        console.log("8 - estadoId");            
         console.log("9 - dataInicio");
         console.log("0 - Voltar");
 
         opcao = prompt("Opção: ");
-
-        if (opcao === "4") {
+        if (opcao === "1") {
+            apolice.seguradoraId = Number(prompt("Nova Seguradora ID: "));
+            console.log("Estado atualizado com sucesso!");
+            prompt("Prima ENTER para continuar...");
+        }
+         else if (opcao === "2") {
+            apolice.tomadorId = Number(prompt("Novo Tomador ID: "));
+            console.log("Estado atualizado com sucesso!");
+            prompt("Prima ENTER para continuar...");
+        }
+         else if (opcao === "3") {
+            apolice.seguradoId = Number(prompt("Novo Segurado ID: "));
+            console.log("Estado atualizado com sucesso!");
+            prompt("Prima ENTER para continuar...");
+        }
+        else if (opcao === "4") {
+            apolice.tipoSeguroId = Number(prompt("Novo Tipo de Seguro ID: "));
+            console.log("Estado atualizado com sucesso!");
+            prompt("Prima ENTER para continuar...");
+        }
+        else if (opcao === "5") {
+            apolice.valorSegurado = Number(prompt("Novo Valor Segurado: "));
+            console.log("Estado atualizado com sucesso!");
+            prompt("Prima ENTER para continuar...");
+        }
+        else if (opcao === "6") {
+            apolice.premio = Number(prompt("Novo Premio: "));
+            console.log("Estado atualizado com sucesso!");
+            prompt("Prima ENTER para continuar...");
+        }
+        else if (opcao === "7") {
+            apolice.periodicidadeId = Number(prompt("Nova Periodicidade ID: "));
+            console.log("Estado atualizado com sucesso!");
+            prompt("Prima ENTER para continuar...");
+        }
+        else if (opcao === "8") {
             apolice.estadoId = Number(prompt("Novo Estado ID: "));
             console.log("Estado atualizado com sucesso!");
+            prompt("Prima ENTER para continuar...");
         }
+        else if (opcao === "9") {
+            apolice.dataInicio = (prompt("Nova Data de Início (yyyy-mm-dd): "));
+            console.log("Estado atualizado com sucesso!");
+            prompt("Prima ENTER para continuar...");
+        }
+
     } while (opcao !== "0");
-*/
-    apolice.estadoId = Number(prompt("Novo Estado ID: "));
-    console.log("Estado atualizado com sucesso!");
+
 }
 
 

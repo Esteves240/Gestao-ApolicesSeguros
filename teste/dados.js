@@ -1,15 +1,31 @@
-//(mudar para Classes :´( )
+const { apolices } = require("../dados");
 
-
-const seguradoras = [
+class Dados{
+  static seguradoras = [
   { id: 2, nome: "Allianz"},
   { id: 3, nome: "Generali"},
   { id: 4, nome: "Ageas"},
   { id: 5, nome: "Zurich"}
 ];
 
+//principal
+static apolices = [
+    {
+        id: 1,
+        seguradoraId: 2,
+        tomadorId: 1,
+        seguradoId: 1,
+        tipoSeguroId: 1,
+        valorSegurado: 100000,
+        premio: 25,
+        periodicidadeId: 1,
+        estadoId: 1,
+        dataInicio: "2025-06-12",
+        proximoId: 2
+    }
+];
 
-const tomadores = [ 
+static tomadores = [ 
   {
     id: 1,
     nome: "João Silva",
@@ -20,30 +36,14 @@ const tomadores = [
   }
 ];
 
-const segurados = [
+static segurados = [
   {
     id: 1,
     identificacao: "Opel Astra",
     data: "1995-06-12",
   }
 ];
-
-//principal
-const apolices = [
-  {
-    id: 1,
-    seguradoraId: 2,
-    tomadorId: 1,
-    seguradoId: 1,
-    tipoSeguroId: 1,
-    valorSegurado: 100000,
-    premio: 25,
-    periodicidadeId: 1,
-    estadoId: 1,
-    dataInicio: "2025-06-12",
-    proximoId: 2
-  }
-];
+}
 
 //dados estáticos
 const tipoSeguros = Object.freeze([ 
@@ -66,15 +66,4 @@ const estados = Object.freeze([
 ]);
 
 
-
-//exports
-
-module.exports = {
-  seguradoras,
-  tomadores,
-  segurados,
-  apolices,
-  tipoSeguros,
-  periodicidades,
-  estados,
-};
+module.exports = Dados;
