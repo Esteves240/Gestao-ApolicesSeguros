@@ -119,37 +119,37 @@ function atualizarApolice() {
         opcao = prompt("Opção: ");
         if (opcao === "1") {
             apolice.seguradoraId = Number(prompt("Nova Seguradora ID: "));
-            console.log("Estado atualizado com sucesso!");
+            console.log("Seguradora atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
          else if (opcao === "2") {
             apolice.tomadorId = Number(prompt("Novo Tomador ID: "));
-            console.log("Estado atualizado com sucesso!");
+            console.log("Tomador atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
          else if (opcao === "3") {
             apolice.seguradoId = Number(prompt("Novo Segurado ID: "));
-            console.log("Estado atualizado com sucesso!");
+            console.log("Segurado atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
         else if (opcao === "4") {
             apolice.tipoSeguroId = Number(prompt("Novo Tipo de Seguro ID: "));
-            console.log("Estado atualizado com sucesso!");
+            console.log("Tipo de Seguro atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
         else if (opcao === "5") {
             apolice.valorSegurado = Number(prompt("Novo Valor Segurado: "));
-            console.log("Estado atualizado com sucesso!");
+            console.log("Valor Segurado atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
         else if (opcao === "6") {
             apolice.premio = Number(prompt("Novo Premio: "));
-            console.log("Estado atualizado com sucesso!");
+            console.log("Prémio atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
         else if (opcao === "7") {
             apolice.periodicidadeId = Number(prompt("Nova Periodicidade ID: "));
-            console.log("Estado atualizado com sucesso!");
+            console.log("Periocidade atualizada com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
         else if (opcao === "8") {
@@ -159,7 +159,7 @@ function atualizarApolice() {
         }
         else if (opcao === "9") {
             apolice.dataInicio = (prompt("Nova Data de Início (yyyy-mm-dd): "));
-            console.log("Estado atualizado com sucesso!");
+            console.log("Data de Início atualizada com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
 

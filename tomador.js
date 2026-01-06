@@ -111,7 +111,7 @@ atualizarTomador() {
         return;
     }
 
-    
+
     let opcao;
 
     do {
@@ -132,27 +132,27 @@ atualizarTomador() {
         if (opcao === "1") {
             
             tomador.nome = (prompt("Novo nome: "));
-            console.log("Tomador atualizado com sucesso!");
+            console.log("Nome do Tomador atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         } 
         else if(opcao === "2"){
             tomador.dataNascimento = (prompt("Nova data: "));
-            console.log("Tomador atualizado com sucesso!");
+            console.log("Data atualizada com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
         else if(opcao === "3"){
             tomador.morada = (prompt("Nova morada: "));
-            console.log("Tomador atualizado com sucesso!");
+            console.log("Morada atualizada com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
         else if(opcao === "4"){
             tomador.telefone = (prompt("Novo telefone: "));
-            console.log("Tomador atualizado com sucesso!");
+            console.log("Telefone atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
         else if(opcao === "5"){
             tomador.email = (prompt("Novo email: "));
-            console.log("Tomador atualizado com sucesso!");
+            console.log("Email atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
        

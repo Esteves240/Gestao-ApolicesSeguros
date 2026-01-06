@@ -124,7 +124,7 @@ atualizarSegurado() {
         } 
         else if(opcao === "2"){
             segurado.data = (prompt("Nova data: "));
-            console.log("Data do Segurado atualizado com sucesso!");
+            console.log("Data atualizada com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
        
