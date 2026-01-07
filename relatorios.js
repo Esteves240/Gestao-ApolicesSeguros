@@ -17,20 +17,19 @@ function relatorioPorTipoSeguro() {
     console.log(" POR TIPO DE SEGURO");
     console.log("====================================\n");
 
-    for (i = 0; i < tipoSeguro.length; i++) {
+    for (i = 0; i < dados.tipoSeguros.length; i++) {
         let totalTipo = 0;
         let existemApolicesAtivas = false;
 
-        console.log("Tipo de Seguro: " + tipoSeguro[i].descricao);
+        console.log("Tipo de Seguro: " + dados.tipoSeguros[i].descricao);
+        for (j = 0; j < dados.apolices.length; j++) {
+            if (dados.apolices[j].tipoSeguroId === dados.tipoSeguros[i].id &&
+                dados.apolices[j].estadoId === 1) {
 
-        for (j = 0; j < apolice.length; j++) {
-            if (apolice[j].tipoSeguroId === tipoSeguro[i].id &&
-                apolice[j].estadoId === 1) {
-
-                let premioAnual = utils.calcularPremioAnual(apolice[j]); 
+                let premioAnual = utils.calcularPremioAnual(dados.apolices[j]); 
 
                 console.log(
-                    "  Apólice nº " + apolice[j].id +
+                    "  Apólice nº " + dados.apolices[j].id +
                     " | Prémio anual: " + premioAnual.toFixed(2) + " €"
                 );
 
@@ -64,12 +63,11 @@ function relatorioPorSeguradora() {
     console.log(" POR SEGURADORA");
     console.log("====================================\n");
 
-    for (i = 0; i < seguradora.length; i++) {
+    for (i = 0; i < dados.seguradoras.length; i++) {
         let totalSeg = 0;
         let encontrou = false;
 
-        console.log("Seguradora: " + seguradora[i].nome);
-
+        console.log("Seguradora: " + dados.seguradoras[i].nome);
         for (j = 0; j < apolice.length; j++) {
             if (apolice[j].seguradoraId === seguradora[i].id &&
                 apolice[j].estadoId === 1) {
