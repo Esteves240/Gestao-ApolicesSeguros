@@ -61,19 +61,6 @@ function calcularIdade(dataNascimento) {
 }
 
 
-//Obter descrição por ID
-function obterDescricaoPorId(lista, id) {
-    let i;
-
-    for (i = 0; i < lista.length; i++) {
-        if (lista[i].id === id) {
-            return lista[i].descricao;
-        }
-    }
-
-    return "Desconhecido";
-}
-
 
 
 //Exportações
@@ -82,6 +69,5 @@ module.exports = {
     apoliceEstaAtiva: apoliceEstaAtiva,
     calcularPremioAnual: calcularPremioAnual,
     calcularIdade: calcularIdade,
-    obterDescricaoPorId: obterDescricaoPorId
 };
 
