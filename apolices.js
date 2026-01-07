@@ -1,11 +1,27 @@
-//CRUD de apólices
-
 const prompt = require('prompt-sync')();
 const dados = require('./dados.js');
 
 
+class Apolice {
+    static listaApolices = [];
+    static proximoId = 1;
+    constructor(id, seguradoraId, tomadorId, seguradoId, tipoSeguroId, valorSegurado, premio, estadoId, periodicidadeId) {
+        this.id = id; 
+        this.seguradoraId = seguradoraId; 
+        this.tomadorId = tomadorId; 
+        this.seguradoId = seguradoId;
+        this.tipoSeguroId = tipoSeguroId;
+        this.valorSegurado = valorSegurado;
+        this.premio = premio; 
+        this.estadoId = estadoId;
+        this.periodicidadeId = periodicidadeId;
+        this.dataInicio = new Date();
+    }
+
+
+//CRUD de apólices
 //Read
-function listarApolices() {
+listarApolices() {
     console.clear();
     console.log("=== LISTA DE APÓLICES ===\n");
 
@@ -29,7 +45,7 @@ function listarApolices() {
 
 
 //Create
-function inserirApolice() {
+inserirApolice() {
     console.clear();
     console.log("=== INSERIR APÓLICE ===\n");
 
@@ -39,10 +55,13 @@ function inserirApolice() {
     novaApolice.seguradoraId = Number(prompt("ID da Seguradora: "));
     novaApolice.tomadorId = Number(prompt("ID do Tomador: "));
     novaApolice.seguradoId = Number(prompt("ID do Segurado: "));
+    console.log("Tipo de Seguro (1 - Saúde || 2 - Vida || 3 - Acidentes de trabalho || 4 - Automóvel || 5 - Habitação || 6 - Animal)")
     novaApolice.tipoSeguroId = Number(prompt("ID do Tipo de Seguro: "));
     novaApolice.valorSegurado = Number(prompt("Valor segurado: "));
     novaApolice.premio = Number(prompt("Prémio: "));
+    console.log("Periodicidade (1 - Mensal || 2 - Anual) ")
     novaApolice.periodicidadeId = Number(prompt("Periodicidade ID: "));
+    console.log("Estado (1 - Ativa || 2 - Inativa")
     novaApolice.estadoId = Number(prompt("Estado ID: "));
     novaApolice.dataInicio = prompt("Data início (YYYY-MM-DD): ");
 
@@ -52,7 +71,7 @@ function inserirApolice() {
 }
 
 //Delete
-function removerApolice() {
+removerApolice() {
     console.clear();
     console.log("=== REMOVER APÓLICE ===\n");
 
@@ -76,9 +95,9 @@ function removerApolice() {
 }
 
 
-//Update (AINDA SÓ ESTÁ UM CAMPO)
+//Update 
 
-function atualizarApolice() {
+atualizarApolice() {
     console.clear();
     console.log("=== ATUALIZAR ESTADO DA APÓLICE ===\n");
 
@@ -105,15 +124,15 @@ function atualizarApolice() {
         console.log("====================================");
         console.log(" Que campo quer atualizar? ");
         console.log("====================================");
-        console.log("1 - seguradoraId");
-        console.log("2 - tomadorId");
-        console.log("3 - seguradoId");
-        console.log("4 - tipoSeguroId");
-        console.log("5 - valorSegurado");
-        console.log("6 - premio");
-        console.log("7 - periodicidadeId");
-        console.log("8 - estadoId");            
-        console.log("9 - dataInicio");
+        console.log("1 - Seguradora");
+        console.log("2 - Tomador");
+        console.log("3 - Segurado");
+        console.log("4 - Tipo de Seguro");
+        console.log("5 - Valor Segurado");
+        console.log("6 - Prémio");
+        console.log("7 - Periodicidade");
+        console.log("8 - Estado");            
+        console.log("9 - Data de Início");
         console.log("0 - Voltar");
 
         opcao = prompt("Opção: ");
@@ -166,13 +185,8 @@ function atualizarApolice() {
     } while (opcao !== "0");
 
 }
-
+}
 
 
 //Exportações
-module.exports = {
-    listarApolices,
-    inserirApolice,
-    removerApolice,
-    atualizarApolice
-};
+module.exports = Apolice;

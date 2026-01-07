@@ -5,7 +5,7 @@ const apolices = require('./apolices.js');
 const Seguradora = require('./seguradora.js');
 const Tomador = require('./tomador.js');
 const Segurado = require('./segurado.js');
-
+const Apolice = require('./apolices.js');
 
 
 let opcao;
@@ -47,6 +47,7 @@ do {
 // 1 Apólices
 function menuApolices() {
     let opcao;
+    let apolices = new Apolice();
 
     do {
         console.clear();
@@ -56,7 +57,7 @@ function menuApolices() {
         console.log("====================================");
         console.log("1 - Listar Apólices");
         console.log("2 - Inserir Apólice");
-        console.log("3 - Atualizar Estado da Apólice");
+        console.log("3 - Atualizar Apólice");
         console.log("4 - Remover Apólice");
         console.log("0 - Voltar");
 
@@ -71,7 +72,7 @@ function menuApolices() {
             prompt("Prima ENTER para continuar...");
         }
         else if (opcao === "3") {
-            apolices.atualizarEstadoApolice();
+            apolices.atualizarApolice();
             prompt("Prima ENTER para continuar...");
         }
         else if (opcao === "4") {

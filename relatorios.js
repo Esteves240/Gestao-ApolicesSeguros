@@ -108,7 +108,7 @@ function relatorioPorSeguradora() {
 
 
 
-//Relatório de entidades ???
+//Relatório de entidades
 
 function mostrarEntidade(entidade) { //função auxiliar
     console.log("Nome: " + entidade.nome);
