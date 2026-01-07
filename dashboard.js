@@ -23,9 +23,9 @@ function mostrarResumoApolices() {
     let inativas = 0;
 
     for (i = 0; i < apolice.length; i++) {
-        if (apolice[i].estadoId === 1) {
+        if (apolice[i].estadoId === 1 && !apolice[i].is_deleted) {
             ativas++;
-        } else if (apolice[i].estadoId === 2) {
+        } else if (apolice[i].estadoId === 2 && !apolice[i].is_deleted) {
             inativas++;
         }
     }
@@ -50,7 +50,8 @@ function mostrarApolicesPorSeguradora() {
 
         for (j = 0; j < apolice.length; j++) {
             if (apolice[j].seguradoraId === seguradora[i].id &&   //??? pelo id e não pelo length ???
-                apolice[j].estadoId === 1) {
+                apolice[j].estadoId === 1 && 
+                !apolice[j].is_deleted) {
 
                 contador++;
                 somaValores += apolice[j].valorSegurado;
@@ -84,7 +85,8 @@ function mostrarApolicesPorTipoSeguro() {
 
         for (j = 0; j < apolice.length; j++) {
             if (apolice[j].tipoSeguroId === tipoSeguro[i].id &&
-                apolice[j].estadoId === 1) {
+                apolice[j].estadoId === 1 
+                && !apolice[j].is_deleted) {
 
                 contador++;
                 somaValores += apolice[j].valorSegurado;

@@ -15,6 +15,7 @@ class Apolice {
         this.premio = premio; 
         this.estadoId = estadoId;
         this.periodicidadeId = periodicidadeId;
+        this.is_deleted = false; 
         this.dataInicio = new Date();
     }
 
@@ -32,6 +33,8 @@ listarApolices() {
 
     for (let i = 0; i < dados.apolices.length; i++) {
         let ap = dados.apolices[i];
+
+        if (ap.is_deleted) continue;
 
         console.log("ID: " + ap.id);
         console.log("Seguradora ID: " + ap.seguradoraId);
@@ -51,7 +54,7 @@ inserirApolice() {
 
     let novaApolice = {};
 
-    novaApolice.id = dados.apolices[0].proximoId++; //???????
+    novaApolice.id = dados.apolices[0].proximoId++; 
     novaApolice.seguradoraId = Number(prompt("ID da Seguradora: "));
     novaApolice.tomadorId = Number(prompt("ID do Tomador: "));
     novaApolice.seguradoId = Number(prompt("ID do Segurado: "));
@@ -70,33 +73,39 @@ inserirApolice() {
     console.log("\nApólice inserida com sucesso!");
 }
 
+
 //Delete
 removerApolice() {
     console.clear();
     console.log("=== REMOVER APÓLICE ===\n");
 
     let id = Number(prompt("ID da apólice a remover: "));
-    let index = -1;
+    let apolice = null;
 
     for (let i = 0; i < dados.apolices.length; i++) {
         if (dados.apolices[i].id === id) {
-            index = i;
+            apolice = dados.apolices[i];
             break;
         }
     }
 
-    if (index === -1) {
+    if (!apolice) {
         console.log("Apólice não encontrada.");
         return;
     }
 
-    dados.apolices.splice(index, 1);
+    if (apolice.is_deleted) {
+        console.log("Esta apólice já foi removida.");
+        return;
+    }
+
+    apolice.is_deleted = true;
+
     console.log("Apólice removida com sucesso!");
 }
 
 
 //Update 
-
 atualizarApolice() {
     console.clear();
     console.log("=== ATUALIZAR ESTADO DA APÓLICE ===\n");

@@ -40,6 +40,7 @@ const apolices = [
     premio: 25,
     periodicidadeId: 1,
     estadoId: 1,
+    is_deleted: false,
     dataInicio: "2025-06-12",
     proximoId: 2
   }
