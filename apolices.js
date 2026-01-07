@@ -5,8 +5,8 @@ const dados = require('./dados.js');
 class Apolice {
     static listaApolices = [];
     static proximoId = 1;
-    constructor(id, seguradoraId, tomadorId, seguradoId, tipoSeguroId, valorSegurado, premio, estadoId, periodicidadeId) {
-        this.id = id; 
+    constructor(seguradoraId, tomadorId, seguradoId, tipoSeguroId, valorSegurado, premio, estadoId, periodicidadeId) {
+        this.id = Apolice.proximoId++; 
         this.seguradoraId = seguradoraId; 
         this.tomadorId = tomadorId; 
         this.seguradoId = seguradoId;
@@ -52,21 +52,29 @@ inserirApolice() {
     console.clear();
     console.log("=== INSERIR APÓLICE ===\n");
 
-    let novaApolice = {};
-
-    novaApolice.id = dados.apolices[0].proximoId++; 
-    novaApolice.seguradoraId = Number(prompt("ID da Seguradora: "));
-    novaApolice.tomadorId = Number(prompt("ID do Tomador: "));
-    novaApolice.seguradoId = Number(prompt("ID do Segurado: "));
-    console.log("Tipo de Seguro (1 - Saúde || 2 - Vida || 3 - Acidentes de trabalho || 4 - Automóvel || 5 - Habitação || 6 - Animal)")
-    novaApolice.tipoSeguroId = Number(prompt("ID do Tipo de Seguro: "));
-    novaApolice.valorSegurado = Number(prompt("Valor segurado: "));
-    novaApolice.premio = Number(prompt("Prémio: "));
-    console.log("Periodicidade (1 - Mensal || 2 - Anual) ")
-    novaApolice.periodicidadeId = Number(prompt("Periodicidade ID: "));
-    console.log("Estado (1 - Ativa || 2 - Inativa")
-    novaApolice.estadoId = Number(prompt("Estado ID: "));
-    novaApolice.dataInicio = prompt("Data início (YYYY-MM-DD): ");
+    const seguradoraId = Number(prompt("ID da Seguradora: "));
+    const tomadorId = Number(prompt("ID do Tomador: "));
+    const seguradoId = Number(prompt("ID do Segurado: "));
+    console.log("Tipo de Seguro (1 - Saúde || 2 - Vida || 3 - Acidentes de trabalho || 4 - Automóvel || 5 - Habitação || 6 - Animal)");
+    const tipoSeguroId = Number(prompt("ID do Tipo de Seguro: "));
+    const valorSegurado = Number(prompt("Valor segurado: "));
+    const premio = Number(prompt("Prémio: "));
+    console.log("Periodicidade (1 - Mensal || 2 - Anual)");
+    const periodicidadeId = Number(prompt("Periodicidade ID: "));
+    console.log("Estado (1 - Ativa || 2 - Inativa)");
+    const estadoId = Number(prompt("Estado ID: "));
+    
+    // Criar nova apólice usando a classe
+    const novaApolice = new Apolice(
+        seguradoraId,
+        tomadorId,
+        seguradoId,
+        tipoSeguroId,
+        valorSegurado,
+        premio,
+        estadoId,
+        periodicidadeId
+    );
 
     dados.apolices.push(novaApolice);
 

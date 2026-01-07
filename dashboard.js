@@ -22,10 +22,10 @@ function mostrarResumoApolices() {
     let ativas = 0;
     let inativas = 0;
 
-    for (i = 0; i < apolice.length; i++) {
-        if (apolice[i].estadoId === 1 && !apolice[i].is_deleted) {
+    for (i = 0; i < dados.apolices.length; i++) {
+        if (dados.apolices[i].estadoId === 1 && !dados.apolices[i].is_deleted) {
             ativas++;
-        } else if (apolice[i].estadoId === 2 && !apolice[i].is_deleted) {
+        } else if (dados.apolices[i].estadoId === 2 && !dados.apolices[i].is_deleted) {
             inativas++;
         }
     }
@@ -44,17 +44,17 @@ function mostrarApolicesPorSeguradora() {
 
     console.log("Apólices ativas por Seguradora:");
 
-    for (i = 0; i < seguradora.length; i++) { 
+    for (i = 0; i < dados.seguradoras.length; i++) { 
         let contador = 0;
         let somaValores = 0;
 
-        for (j = 0; j < apolice.length; j++) {
-            if (apolice[j].seguradoraId === seguradora[i].id &&   //??? pelo id e não pelo length ???
-                apolice[j].estadoId === 1 && 
-                !apolice[j].is_deleted) {
+        for (j = 0; j < dados.apolices.length; j++) {
+            if (dados.apolices[j].seguradoraId === dados.seguradoras[i].id &&   //??? pelo id e não pelo length ???
+                dados.apolices[j].estadoId === 1 && 
+                !dados.apolices[j].is_deleted) {
 
                 contador++;
-                somaValores += apolice[j].valorSegurado;
+                somaValores += dados.apolices[j].valorSegurado;
                 existemApolicesAtivas = true;
             }
         }
@@ -77,19 +77,19 @@ function mostrarApolicesPorTipoSeguro() {
     let i, j;
     let existemApolicesAtivas = false;
 
-    console.log("Apólices ativas por Tipo de Seguro:");
+    console.log("\nApólices ativas por Tipo de Seguro:");
 
-    for (i = 0; i < tipoSeguro.length; i++) {
+    for (i = 0; i < dados.tipoSeguros.length; i++) {
         let contador = 0;
         let somaValores = 0;
 
-        for (j = 0; j < apolice.length; j++) {
-            if (apolice[j].tipoSeguroId === tipoSeguro[i].id &&
-                apolice[j].estadoId === 1 
-                && !apolice[j].is_deleted) {
+        for (j = 0; j < dados.apolices.length; j++) {
+            if (dados.apolices[j].tipoSeguroId === dados.tipoSeguros[i].id &&
+                dados.apolices[j].estadoId === 1 
+                && !dados.apolices[j].is_deleted) {
 
                 contador++;
-                somaValores += apolice[j].valorSegurado;
+                somaValores += dados.apolices[j].valorSegurado;
                 existemApolicesAtivas = true;
             }
         }

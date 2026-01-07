@@ -1,7 +1,6 @@
 const prompt = require('prompt-sync')();
 const dashboard = require('./dashboard.js');
 const relatorios = require('./relatorios.js');
-const apolices = require('./apolices.js');
 const Seguradora = require('./seguradora.js');
 const Tomador = require('./tomador.js');
 const Segurado = require('./segurado.js');
