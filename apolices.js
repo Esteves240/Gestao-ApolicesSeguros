@@ -1,5 +1,6 @@
 const prompt = require('prompt-sync')();
 const dados = require('./dados.js');
+const {validarEstado, validarPeriodicidade, validarTipoSeguro, validarNumeroPositivo, validarPremio} = require('./validacoes.js');
 
 
 class Apolice {
@@ -55,15 +56,12 @@ inserirApolice() {
     const seguradoraId = Number(prompt("ID da Seguradora: "));
     const tomadorId = Number(prompt("ID do Tomador: "));
     const seguradoId = Number(prompt("ID do Segurado: "));
-    console.log("Tipo de Seguro (1 - Saúde || 2 - Vida || 3 - Acidentes de trabalho || 4 - Automóvel || 5 - Habitação || 6 - Animal)");
-    const tipoSeguroId = Number(prompt("ID do Tipo de Seguro: "));
-    const valorSegurado = Number(prompt("Valor segurado: "));
-    const premio = Number(prompt("Prémio: "));
-    console.log("Periodicidade (1 - Mensal || 2 - Anual)");
-    const periodicidadeId = Number(prompt("Periodicidade ID: "));
-    console.log("Estado (1 - Ativa || 2 - Inativa)");
-    const estadoId = Number(prompt("Estado ID: "));
-    
+    const tipoSeguroId = validarTipoSeguro();
+    const valorSegurado = validarNumeroPositivo("Valor Segurado: ");
+    const premio = validarPremio("Prémio: ");
+    const periodicidadeId = validarPeriodicidade();
+    const estadoId = validarEstado();
+
     // Criar nova apólice usando a classe
     const novaApolice = new Apolice(
         seguradoraId,
@@ -99,6 +97,11 @@ removerApolice() {
 
     if (!apolice) {
         console.log("Apólice não encontrada.");
+        return;
+    }
+
+    if (apolice.estadoId === 1) {
+        console.log("Não é possível remover uma apólice ativa.");
         return;
     }
 
@@ -169,7 +172,7 @@ atualizarApolice() {
             prompt("Prima ENTER para continuar...");
         }
         else if (opcao === "4") {
-            apolice.tipoSeguroId = Number(prompt("Novo Tipo de Seguro ID: "));
+            apolice.tipoSeguroId = validarTipoSeguro();
             console.log("Tipo de Seguro atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
@@ -184,12 +187,12 @@ atualizarApolice() {
             prompt("Prima ENTER para continuar...");
         }
         else if (opcao === "7") {
-            apolice.periodicidadeId = Number(prompt("Nova Periodicidade ID: "));
+            apolice.periodicidadeId = validarPeriodicidade();
             console.log("Periocidade atualizada com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
         else if (opcao === "8") {
-            apolice.estadoId = Number(prompt("Novo Estado ID: "));
+            apolice.estadoId = validarEstado();
             console.log("Estado atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
