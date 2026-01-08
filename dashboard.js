@@ -13,6 +13,8 @@ function mostrarDashboard() {
     mostrarResumoApolices();
     mostrarApolicesPorSeguradora();
     mostrarApolicesPorTipoSeguro();
+    mostrarMelhorCliente();
+    mostrarSeguradoraComMaisApolices();
 }
 
 
@@ -107,8 +109,72 @@ function mostrarApolicesPorTipoSeguro() {
 }
 
 
+function mostrarMelhorCliente() {
+    let i, j;
+    let maxApolices = 0;
+    let melhorTomador = null;
+
+    for (i = 0; i < dados.tomadores.length; i++) {
+        let contador = 0;
+
+        for (j = 0; j < dados.apolices.length; j++) {
+            if (
+                dados.apolices[j].tomadorId === dados.tomadores[i].id &&
+                dados.apolices[j].estadoId === 1 &&
+                !dados.apolices[j].is_deleted
+            ) {
+                contador++;
+            }
+        }
+
+        if (contador > maxApolices) {
+            maxApolices = contador;
+            melhorTomador = dados.tomadores[i];
+        }
+    }
+
+    console.log("\nMelhor Cliente (Tomador):");
+
+    if (melhorTomador) {
+        console.log(`- ${melhorTomador.nome} (${maxApolices} apólice(s) ativa(s))`);
+    } else {
+        console.log("Não existem apólices ativas.");
+    }
+}
 
 
+function mostrarSeguradoraComMaisApolices() {
+    let i, j;
+    let maxApolices = 0;
+    let melhorSeguradora = null;
+
+    for (i = 0; i < dados.seguradoras.length; i++) {
+        let contador = 0;
+
+        for (j = 0; j < dados.apolices.length; j++) {
+            if (
+                dados.apolices[j].seguradoraId === dados.seguradoras[i].id &&
+                dados.apolices[j].estadoId === 1 &&
+                !dados.apolices[j].is_deleted
+            ) {
+                contador++;
+            }
+        }
+
+        if (contador > maxApolices) {
+            maxApolices = contador;
+            melhorSeguradora = dados.seguradoras[i];
+        }
+    }
+
+    console.log("\nSeguradora com mais apólices:");
+
+    if (melhorSeguradora) {
+        console.log(`- ${melhorSeguradora.nome} (${maxApolices} apólice(s) ativa(s))`);
+    } else {
+        console.log("Não existem apólices ativas.");
+    }
+}
 
 
 //Exportação
