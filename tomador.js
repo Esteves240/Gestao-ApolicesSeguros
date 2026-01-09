@@ -5,14 +5,13 @@ const { validarNumeroPositivo } = require('./validacoes.js');
 //import Dados from './teste/dados.js';
 
 class Tomador{
-    static proximoId = 6;
-    constructor(nome, dataNascimento, morada, telefone, email){
+    static proximoId = 2;
+    constructor(nome, dataNascimento, morada, telefone){
         this.id = 0;
         this.nome = nome;
         this.dataNascimento = dataNascimento
         this.morada = morada;
         this.telefone = telefone;
-        this.email = email;
     }
 
     
@@ -35,7 +34,6 @@ listarTomadores() {
         console.log("DATA DE NASCIMENTO: " + tm.dataNascimento.split("-").reverse().join("/")); //para a data ficar no formato correto
         console.log("MORADA: " + tm.morada);
         console.log("TELEFONE: " + tm.telefone);
-        console.log("EMAIL: " + tm.email);
         console.log("-------------------------");
     }
 }
@@ -51,7 +49,6 @@ inserirTomador() {
         this.dataNascimento = prompt("Data de nascimento (yyyy-mm-dd): ");
         this.morada = prompt("Morada: ");
         this.telefone = validarNumeroPositivo("Telefone: ");
-        this.email = prompt("Email: ");
     console.log(this);   
 
     Dados.tomadores.push(this);
@@ -125,7 +122,6 @@ atualizarTomador() {
         console.log("2 - Data de Nascimento");
         console.log("3 - Morada");
         console.log("4 - Telefone");
-        console.log("5 - Email");
         console.log("0 - Voltar");
 
         opcao = prompt("Opção: ");
@@ -150,13 +146,7 @@ atualizarTomador() {
             tomador.telefone = (prompt("Novo telefone: "));
             console.log("Telefone atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
-        }
-        else if(opcao === "5"){
-            tomador.email = (prompt("Novo email: "));
-            console.log("Email atualizado com sucesso!");
-            prompt("Prima ENTER para continuar...");
-        }
-       
+        } 
 
 
     } while (opcao !== "0");
