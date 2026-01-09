@@ -13,7 +13,7 @@ function mostrarDashboard() {
     mostrarResumoApolices();
     mostrarApolicesPorSeguradora();
     mostrarApolicesPorTipoSeguro();
-    mostrarMelhorCliente();
+   // mostrarMelhorCliente();
     mostrarSeguradoraComMaisApolices();
 }
 
