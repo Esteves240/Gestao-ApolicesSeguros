@@ -1,5 +1,6 @@
 const prompt = require('prompt-sync')();
 const Dados = require('./teste/dados.js');
+const { validarNumeroPositivo } = require('./validacoes.js');
 
 //import Dados from './teste/dados.js';
 
@@ -49,7 +50,7 @@ inserirTomador() {
         this.nome = prompt("Nome: ");
         this.dataNascimento = prompt("Data de nascimento (yyyy-mm-dd): ");
         this.morada = prompt("Morada: ");
-        this.telefone = prompt("Telefone: ");
+        this.telefone = validarNumeroPositivo("Telefone: ");
         this.email = prompt("Email: ");
     console.log(this);   
 
