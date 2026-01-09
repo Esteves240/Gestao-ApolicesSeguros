@@ -44,6 +44,9 @@ listarApolices() {
         console.log("Prémio: " + ap.premio);
         console.log("Estado ID: " + ap.estadoId);
         console.log("Data de início: " + ap.dataInicio.split("-").reverse().join("/"));
+        console.log("Tomador ID: " + ap.tomadorId);
+        console.log("Segurado ID: " + ap.seguradoId);
+        console.log("Periodicidade ID: " + ap.periodicidadeId);
         console.log("-------------------------");
     }
 }

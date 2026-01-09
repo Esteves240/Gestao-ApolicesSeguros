@@ -125,7 +125,7 @@ function menuSeguradoras() {
 // 3 Tomadores
 function menuTomadores() {
     let opcao;
-   let tomadores = new Tomador();
+    let tomadores = new Tomador();
 
     do {
         console.clear();
