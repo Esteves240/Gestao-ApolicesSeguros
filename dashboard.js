@@ -108,7 +108,7 @@ function mostrarApolicesPorTipoSeguro() {
     }
 }
 
-
+/*
 function mostrarMelhorCliente() {
     let i, j;
     let maxApolices = 0;
@@ -141,7 +141,7 @@ function mostrarMelhorCliente() {
         console.log("Não existem apólices ativas.");
     }
 }
-
+*/
 
 function mostrarSeguradoraComMaisApolices() {
     let i, j;
