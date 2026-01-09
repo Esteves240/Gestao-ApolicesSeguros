@@ -66,7 +66,7 @@ removerTomador() {
     let index = -1;
     
      for (let i = 0; i < Dados.apolices.length; i++) { //verificar se existem apolices ativas
-        if (Dados.apolices[i].seguradoraId === id) {
+        if (Dados.apolices[i].tomadorId === id) {
             console.log("Não é possível remover: existem apólices associadas.");
             return;
         }
