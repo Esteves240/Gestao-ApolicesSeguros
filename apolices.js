@@ -6,7 +6,7 @@ const {validarEstado, validarPeriodicidade, validarTipoSeguro, validarNumeroPosi
 class Apolice {
     static listaApolices = [];
     static proximoId = 1;
-    constructor(seguradoraId, tomadorId, seguradoId, tipoSeguroId, valorSegurado, premio, estadoId, periodicidadeId) {
+    constructor(seguradoraId, tomadorId, seguradoId, tipoSeguroId, valorSegurado, premio, estadoId, periodicidadeId, dataInicio) {
         this.id = Apolice.proximoId++; 
         this.seguradoraId = seguradoraId; 
         this.tomadorId = tomadorId; 
@@ -17,7 +17,7 @@ class Apolice {
         this.estadoId = estadoId;
         this.periodicidadeId = periodicidadeId;
         this.is_deleted = false; 
-        this.dataInicio = new Date();
+        this.dataInicio = dataInicio;
     }
 
 
@@ -43,6 +43,7 @@ listarApolices() {
         console.log("Valor Segurado: " + ap.valorSegurado);
         console.log("Prémio: " + ap.premio);
         console.log("Estado ID: " + ap.estadoId);
+        console.log("Data de início: " + ap.dataInicio.split("-").reverse().join("/"));
         console.log("-------------------------");
     }
 }
@@ -61,6 +62,7 @@ inserirApolice() {
     const premio = validarPremio("Prémio: ");
     const periodicidadeId = validarPeriodicidade();
     const estadoId = validarEstado();
+    const dataInicio = prompt("Data de início (yyyy-mm-dd): ")
 
     // Criar nova apólice usando a classe
     const novaApolice = new Apolice(
@@ -71,7 +73,8 @@ inserirApolice() {
         valorSegurado,
         premio,
         estadoId,
-        periodicidadeId
+        periodicidadeId,
+        dataInicio
     );
 
     dados.apolices.push(novaApolice);
