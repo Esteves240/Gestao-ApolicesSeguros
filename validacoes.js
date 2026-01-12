@@ -47,10 +47,10 @@ function validarTipoSeguro() {
     do {
         console.log("1 - Saúde || 2 - Vida || 3 - Acidentes de trabalho || 4 - Automóvel || 5 - Habitação || 6 - Animal");
         tipoSeguroId = Number(prompt("Tipo de Seguro : "));
-        if (tipoSeguroId < 1 || tipoSeguroId > 6) {
+        if (!Number.isInteger(tipoSeguroId) || tipoSeguroId < 1 || tipoSeguroId > 6) { //isInteger para não aceitar letras ou números decimais 
             console.log("Tipo de Seguro inválido.");
         }
-    } while (tipoSeguroId < 1 || tipoSeguroId > 6);
+    } while (!Number.isInteger(tipoSeguroId) || tipoSeguroId < 1 || tipoSeguroId > 6);
 
     return tipoSeguroId;
 
