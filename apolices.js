@@ -183,12 +183,12 @@ atualizarApolice() {
             prompt("Prima ENTER para continuar...");
         }
         else if (opcao === "5") {
-            apolice.valorSegurado = Number(prompt("Novo Valor Segurado: "));
+            apolice.valorSegurado = validarNumeroPositivo("Novo Valor Segurado: ");
             console.log("Valor Segurado atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
         else if (opcao === "6") {
-            apolice.premio = Number(prompt("Novo Premio: "));
+            apolice.premio = validarPremio();
             console.log("Prémio atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }

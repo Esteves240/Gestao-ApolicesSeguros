@@ -45,7 +45,12 @@ inserirTomador() {
 
 
         this.id = Tomador.proximoId++;
-        this.nome = prompt("Nome: ");
+        do {
+            this.nome = prompt("Nome: ").trim(); //remove espaços em branco 
+            if (this.nome === "") {
+                console.log("O nome não pode estar vazio.")
+            }
+        } while (this.nome === "");
         this.dataNascimento = prompt("Data de nascimento (yyyy-mm-dd): ");
         this.morada = prompt("Morada: ");
         this.telefone = validarNumeroPositivo("Telefone: ");
@@ -127,8 +132,13 @@ atualizarTomador() {
         opcao = prompt("Opção: ");
 
         if (opcao === "1") {
+            do {
+            tomador.nome = (prompt("Novo nome: ")).trim();
+                if (tomador.nome === "") {
+                console.log ("O nome não pode estar vazio.")
+            }
+            } while (tomador.nome === "");
             
-            tomador.nome = (prompt("Novo nome: "));
             console.log("Nome do Tomador atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         } 

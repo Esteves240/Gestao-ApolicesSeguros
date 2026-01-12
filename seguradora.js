@@ -38,7 +38,14 @@ inserirSeguradora() {
 
 
         this.id = Seguradora.proximoId++;
-        this.nome = prompt("Nome: ");
+
+        do {
+            this.nome = prompt("Nome: ").trim(); //remove espaços em branco 
+            if (this.nome === "") {
+                console.log("O nome não pode estar vazio.")
+            }
+        } while (this.nome === "");
+
     console.log(this);   
 
     Dados.seguradoras.push(this);
@@ -99,11 +106,15 @@ atualizarSeguradora() {
         return;
     }
 
-    seguradora.nome = (prompt("Novo nome: "));
+    do {
+        seguradora.nome = (prompt("Novo nome: ")).trim();
+        if (seguradora.nome === "") {
+            console.log ("O nome não pode estar vazio.")
+        }
+    } while (seguradora.nome === "");
+
     console.log("Seguradora atualizado com sucesso!");
 }
-
-
 }
 
 module.exports = Seguradora;

@@ -41,7 +41,12 @@ inserirSegurado() {
 
 
         this.id = Segurado.proximoId++;
-        this.identificacao = prompt("Identificação: ");
+        do {
+            this.identificacao = prompt("Identificação: ").trim(); //remove espaços em branco 
+            if (this.identificacao === "") {
+                console.log("A identificação não pode estar vazia.")
+            }
+        } while (this.identificacao === "");
         this.data = prompt("Data (yyyy-mm-dd): ");
     console.log(this);   
 
@@ -118,7 +123,12 @@ atualizarSegurado() {
         opcao = prompt("Opção: ");
 
         if (opcao === "1") {
-            segurado.identificacao = prompt("Nova identificação: ");
+            do {
+                segurado.identificacao = (prompt("Nova identificação: ")).trim();
+                if (segurado.identificacao === "") {
+                console.log ("A identificação não pode estar vazia.")
+            }
+            } while (segurado.identificacao === "");
             console.log("Identificação do Segurado atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         } 

@@ -1,7 +1,7 @@
 //Importações
 const dados = require('./dados.js');
 const utils = require('./utils.js');
-
+const prompt = require('prompt-sync')();
 const apolice = dados.apolices;
 const seguradora = dados.seguradoras;
 const tipoSeguro = dados.tipoSeguros;
@@ -108,7 +108,7 @@ function relatorioPorSeguradora() {
 
 //Relatório de entidades
 
-function mostrarEntidade(entidade) { //função auxiliar
+/*function mostrarEntidade(entidade) { //função auxiliar
     console.log("Nome: " + entidade.nome);
     console.log("Idade: " + utils.calcularIdade(entidade.dataNascimento) + " anos");
     console.log("Morada: " + entidade.morada);
@@ -143,6 +143,70 @@ function relatorioEntidades() {
             entidadesMostradas.push("T" + tomador.id);                            //regista que já foi mostrada
         }
     }
+}*/
+
+function mostrarEntidadeTomador(entidade) { //função auxiliar
+    console.log("Nome: " + entidade.nome);
+    console.log("Idade: " + utils.calcularIdade(entidade.dataNascimento) + " anos");
+    console.log("Morada: " + entidade.morada);
+    console.log("Telefone: " + entidade.telefone);
+    console.log("------------------------------------");
+}
+
+function mostrarEntidadeSegurado(entidade) {
+    console.log("Identificação: " + entidade.identificacao);
+    console.log("Data: " + entidade.data);
+    console.log("------------------------------------");
+}
+
+
+function relatorioEntidades() {
+    console.log("====================================");
+    console.log(" RELATÓRIO DE ENTIDADES (APÓLICES ATIVAS)");
+    console.log("====================================\n");
+    let opcao = prompt("1 - Relatório de Entidades (Tomadores)  ||  2 - Relatório de Entidades (Segurados): ");
+    let entidadesMostradas = [];
+    
+    if (opcao === "1") {
+
+    	for (let i = 0; i < dados.apolices.length; i++) {
+        let ap = dados.apolices[i];
+
+        // Estado ativa
+        if (ap.estadoId !== 1) {
+            continue;
+        }
+
+        // TOMADOR
+        let tomador = dados.tomadores.find(function(t) {  //Procura no array listaTomadores a pessoa cujo id é igual ao tomadorId da apólice
+            return t.id === ap.tomadorId;
+        });
+
+        if (tomador && entidadesMostradas.indexOf("T" + tomador.id) === -1) {       //verifica se já foi mostrada
+            mostrarEntidadeTomador(tomador);                                              //mostra a entidade
+            entidadesMostradas.push("T" + tomador.id);                            //regista que já foi mostrada
+        }
+    }
+    } else if (opcao === "2") {
+        for (let i = 0; i < dados.apolices.length; i++) {
+            let ap = dados.apolices[i];
+
+            if (ap.estadoId !== 1) {
+                continue;
+            }
+            //SEGURADO
+            let segurado = dados.segurados.find(function(s) {
+                return s.id === ap.seguradoId;
+            });
+
+            if (segurado && entidadesMostradas.indexOf("S" + segurado.id) === -1) {
+                mostrarEntidadeSegurado(segurado);
+                entidadesMostradas.push("S" + segurado.id);
+            }
+        }
+    } else {
+	console.log("Opção inválida!");
+}
 }
 
 

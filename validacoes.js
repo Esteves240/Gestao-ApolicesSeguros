@@ -60,8 +60,10 @@ function validarPremio(valorSegurado) {
     let premio;
     do {
         premio = Number(prompt("Prémio: "));
-        if (premio <= 0 || premio > valorSegurado) {
-            console.log("Prémio não pode ser maior que o valor segurado.");
+        if (premio <= 0) {
+            console.log("Prémio tem que ser número positivo.");
+        } else if (premio > valorSegurado) {
+            console.log("Prémio não pode ser maior que valor segurado");
         }
     } while (premio <= 0 || premio > valorSegurado);
 
