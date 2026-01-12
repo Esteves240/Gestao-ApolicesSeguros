@@ -1,5 +1,5 @@
 const prompt = require('prompt-sync')();
-const dados = require('./dados.js');
+const Dados = require('./teste/dados.js');
 const {validarEstado, validarPeriodicidade, validarTipoSeguro, validarNumeroPositivo, validarPremio} = require('./validacoes.js');
 
 
@@ -27,13 +27,13 @@ listarApolices() {
     console.clear();
     console.log("=== LISTA DE APÓLICES ===\n");
 
-    if (dados.apolices.length === 0) {
+    if (Dados.apolices.length === 0) {
         console.log("Não existem apólices registadas.");
         return;
     }
 
-    for (let i = 0; i < dados.apolices.length; i++) {
-        let ap = dados.apolices[i];
+    for (let i = 0; i < Dados.apolices.length; i++) {
+        let ap = Dados.apolices[i];
 
         if (ap.is_deleted) continue;
 
@@ -57,9 +57,57 @@ inserirApolice() {
     console.clear();
     console.log("=== INSERIR APÓLICE ===\n");
 
-    const seguradoraId = Number(prompt("ID da Seguradora: "));
-    const tomadorId = Number(prompt("ID do Tomador: "));
-    const seguradoId = Number(prompt("ID do Segurado: "));
+    let seguradoraId;
+
+    while (true) {
+        seguradoraId = Number(prompt("ID da Seguradora: ")); 
+        let encontrado = false;
+        for (let i = 0; i < Dados.seguradoras.length; i++) {
+            if (Dados.seguradoras[i].id === seguradoraId) {
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (encontrado) 
+            break;
+        console.log("Seguradora não existe.");
+    }
+
+    let tomadorId;
+
+    while (true) {
+        tomadorId = Number(prompt("ID do Tomador: "));
+        let encontrado = false; 
+        for (let i = 0; i < Dados.tomadores.length; i++) {
+            if (Dados.tomadores[i].id === tomadorId) {
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (encontrado)
+            break;
+        console.log("Tomador não existe.");
+}
+
+    let seguradoId;
+
+    while(true) {
+        seguradoId = Number(prompt("ID do Segurado: "));
+        let encontrado = false; 
+        for (let i = 0; i < Dados.segurados.length; i++) {
+            if (Dados.segurados[i].id === seguradoId) {
+                encontrado = true; 
+                break;
+            }
+        }
+
+        if (encontrado)
+            break; 
+        console.log("Segurado não existe.")
+    }
+    
     const tipoSeguroId = validarTipoSeguro();
     const valorSegurado = validarNumeroPositivo("Valor Segurado: ");
     const premio = validarPremio("Prémio: ");
@@ -80,7 +128,7 @@ inserirApolice() {
         dataInicio
     );
 
-    dados.apolices.push(novaApolice);
+    Dados.apolices.push(novaApolice);
 
     console.log("\nApólice inserida com sucesso!");
 }
@@ -94,9 +142,9 @@ removerApolice() {
     let id = Number(prompt("ID da apólice a remover: "));
     let apolice = null;
 
-    for (let i = 0; i < dados.apolices.length; i++) {
-        if (dados.apolices[i].id === id) {
-            apolice = dados.apolices[i];
+    for (let i = 0; i < Dados.apolices.length; i++) {
+        if (Dados.apolices[i].id === id) {
+            apolice = Dados.apolices[i];
             break;
         }
     }
@@ -130,9 +178,9 @@ atualizarApolice() {
     let id = Number(prompt("ID da apólice: "));
     let apolice = null;
 
-    for (let i = 0; i < dados.apolices.length; i++) {
-        if (dados.apolices[i].id === id) {
-            apolice = dados.apolices[i];
+    for (let i = 0; i < Dados.apolices.length; i++) {
+        if (Dados.apolices[i].id === id) {
+            apolice = Dados.apolices[i];
             break;
         }
     }
