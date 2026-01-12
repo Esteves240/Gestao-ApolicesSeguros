@@ -162,9 +162,11 @@ function mostrarEntidadeSegurado(entidade) {
 
 function relatorioEntidades() {
     console.log("====================================");
-    console.log(" RELATÓRIO DE ENTIDADES (APÓLICES ATIVAS)");
+    console.log(" RELATÓRIO DE ENTIDADES");
+    console.log(" (APÓLICES ATIVAS)")
     console.log("====================================\n");
-    let opcao = prompt("1 - Relatório de Entidades (Tomadores)  ||  2 - Relatório de Entidades (Segurados): ");
+    console.log("1 - Relatório de Entidades (Tomadores)  ||  2 - Relatório de Entidades (Segurados) ");
+    let opcao = prompt("Opção: ");
     let entidadesMostradas = [];
     
     if (opcao === "1") {
