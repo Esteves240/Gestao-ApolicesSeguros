@@ -1,9 +1,10 @@
 //Importações
 const dados = require('./dados.js');
+const Dados = require('./teste/dados.js');
 const utils = require('./utils.js');
 const prompt = require('prompt-sync')();
-const apolice = dados.apolices;
-const seguradora = dados.seguradoras;
+const apolice = Dados.apolices;
+const seguradora = Dados.seguradoras;
 const tipoSeguro = dados.tipoSeguros;
 
 
@@ -22,14 +23,14 @@ function relatorioPorTipoSeguro() {
         let existemApolicesAtivas = false;
 
         console.log("Tipo de Seguro: " + dados.tipoSeguros[i].descricao);
-        for (j = 0; j < dados.apolices.length; j++) {
-            if (dados.apolices[j].tipoSeguroId === dados.tipoSeguros[i].id &&
-                dados.apolices[j].estadoId === 1) {
+        for (j = 0; j < Dados.apolices.length; j++) {
+            if (Dados.apolices[j].tipoSeguroId === dados.tipoSeguros[i].id &&
+                Dados.apolices[j].estadoId === 1) {
 
-                let premioAnual = utils.calcularPremioAnual(dados.apolices[j]); 
+                let premioAnual = utils.calcularPremioAnual(Dados.apolices[j]); 
 
                 console.log(
-                    "  Apólice nº " + dados.apolices[j].id +
+                    "  Apólice nº " + Dados.apolices[j].id +
                     " | Prémio anual: " + premioAnual.toFixed(2) + " €"
                 );
 
@@ -63,11 +64,11 @@ function relatorioPorSeguradora() {
     console.log(" POR SEGURADORA");
     console.log("====================================\n");
 
-    for (i = 0; i < dados.seguradoras.length; i++) {
+    for (i = 0; i < Dados.seguradoras.length; i++) {
         let totalSeg = 0;
         let encontrou = false;
 
-        console.log("Seguradora: " + dados.seguradoras[i].nome);
+        console.log("Seguradora: " + Dados.seguradoras[i].nome);
         for (j = 0; j < apolice.length; j++) {
             if (apolice[j].seguradoraId === seguradora[i].id &&
                 apolice[j].estadoId === 1) {
@@ -171,8 +172,8 @@ function relatorioEntidades() {
     
     if (opcao === "1") {
 
-    	for (let i = 0; i < dados.apolices.length; i++) {
-        let ap = dados.apolices[i];
+    	for (let i = 0; i < Dados.apolices.length; i++) {
+        let ap = Dados.apolices[i];
 
         // Estado ativa
         if (ap.estadoId !== 1) {
@@ -180,7 +181,7 @@ function relatorioEntidades() {
         }
 
         // TOMADOR
-        let tomador = dados.tomadores.find(function(t) {  //Procura no array listaTomadores a pessoa cujo id é igual ao tomadorId da apólice
+        let tomador = Dados.tomadores.find(function(t) {  //Procura no array listaTomadores a pessoa cujo id é igual ao tomadorId da apólice
             return t.id === ap.tomadorId;
         });
 
@@ -190,14 +191,14 @@ function relatorioEntidades() {
         }
     }
     } else if (opcao === "2") {
-        for (let i = 0; i < dados.apolices.length; i++) {
-            let ap = dados.apolices[i];
+        for (let i = 0; i < Dados.apolices.length; i++) {
+            let ap = Dados.apolices[i];
 
             if (ap.estadoId !== 1) {
                 continue;
             }
             //SEGURADO
-            let segurado = dados.segurados.find(function(s) {
+            let segurado = Dados.segurados.find(function(s) {
                 return s.id === ap.seguradoId;
             });
 

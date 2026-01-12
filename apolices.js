@@ -211,17 +211,70 @@ atualizarApolice() {
 
         opcao = prompt("Opção: ");
         if (opcao === "1") {
-            apolice.seguradoraId = Number(prompt("Nova Seguradora ID: "));
+            let novoId; 
+
+            while(true) {
+                novoId = Number(prompt("Nova Seguradora ID: "));
+                let encontrado = false; 
+
+                for (let i = 0; i < Dados.seguradoras.length; i++) {
+                    if(Dados.seguradoras[i].id === novoId) {
+                        encontrado = true; 
+                        break; 
+                    }
+                }
+
+                if (encontrado)
+                    break; 
+                console.log("Seguradora não existe."); 
+            }
+            
+            apolice.seguradoraId = novoId; 
             console.log("Seguradora atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
          else if (opcao === "2") {
-            apolice.tomadorId = Number(prompt("Novo Tomador ID: "));
+            let novoId; 
+
+            while(true) {
+                novoId = Number(prompt("Novo Tomador ID: "));
+                let encontrado = false; 
+
+                for (let i = 0; i < Dados.tomadores.length; i++) {
+                    if (Dados.tomadores[i].id === novoId) {
+                        encontrado = true;
+                        break; 
+                    }
+                }
+
+                if (encontrado)
+                    break; 
+                console.log("Tomador não existe.");
+        
+            }
+            apolice.tomadorId = novoId;
             console.log("Tomador atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
          else if (opcao === "3") {
-            apolice.seguradoId = Number(prompt("Novo Segurado ID: "));
+            let novoId; 
+
+            while(true) {
+                novoId = Number(prompt("Novo Segurado ID: ")); 
+                let encontrado = false; 
+
+                for (let i = 0; i < Dados.segurados.length; i++) {
+                    if (Dados.segurados[i].id === novoId) {
+                        encontrado = true; 
+                        break; 
+                    }
+                }
+
+            if (encontrado)
+                break; 
+            console.log("Segurado não existe."); 
+            }
+            apolice.seguradoId = novoId;
             console.log("Segurado atualizado com sucesso!");
             prompt("Prima ENTER para continuar...");
         }
