@@ -1,7 +1,7 @@
 const dados = require('./dados.js');
-
-const apolice = dados.apolices;
-const seguradora = dados.seguradoras;
+const Dados = require('./teste/dados.js');
+const apolice = Dados.apolices;
+const seguradora = Dados.seguradoras;
 const tipoSeguro = dados.tipoSeguros;
 
 
@@ -24,10 +24,10 @@ function mostrarResumoApolices() {
     let ativas = 0;
     let inativas = 0;
 
-    for (i = 0; i < dados.apolices.length; i++) {
-        if (dados.apolices[i].estadoId === 1 && !dados.apolices[i].is_deleted) {
+    for (i = 0; i < Dados.apolices.length; i++) {
+        if (Dados.apolices[i].estadoId === 1 && !Dados.apolices[i].is_deleted) {
             ativas++;
-        } else if (dados.apolices[i].estadoId === 2 && !dados.apolices[i].is_deleted) {
+        } else if (Dados.apolices[i].estadoId === 2 && !Dados.apolices[i].is_deleted) {
             inativas++;
         }
     }
@@ -46,17 +46,17 @@ function mostrarApolicesPorSeguradora() {
 
     console.log("Apólices ativas por Seguradora:");
 
-    for (i = 0; i < dados.seguradoras.length; i++) { 
+    for (i = 0; i < Dados.seguradoras.length; i++) { 
         let contador = 0;
         let somaValores = 0;
 
-        for (j = 0; j < dados.apolices.length; j++) {
-            if (dados.apolices[j].seguradoraId === dados.seguradoras[i].id &&   //??? pelo id e não pelo length ???
-                dados.apolices[j].estadoId === 1 && 
-                !dados.apolices[j].is_deleted) {
+        for (j = 0; j < Dados.apolices.length; j++) {
+            if (Dados.apolices[j].seguradoraId === Dados.seguradoras[i].id &&   //??? pelo id e não pelo length ???
+                Dados.apolices[j].estadoId === 1 && 
+                !Dados.apolices[j].is_deleted) {
 
                 contador++;
-                somaValores += dados.apolices[j].valorSegurado;
+                somaValores += Dados.apolices[j].valorSegurado;
                 existemApolicesAtivas = true;
             }
         }
@@ -85,13 +85,13 @@ function mostrarApolicesPorTipoSeguro() {
         let contador = 0;
         let somaValores = 0;
 
-        for (j = 0; j < dados.apolices.length; j++) {
-            if (dados.apolices[j].tipoSeguroId === dados.tipoSeguros[i].id &&
-                dados.apolices[j].estadoId === 1 
-                && !dados.apolices[j].is_deleted) {
+        for (j = 0; j < Dados.apolices.length; j++) {
+            if (Dados.apolices[j].tipoSeguroId === dados.tipoSeguros[i].id &&
+                Dados.apolices[j].estadoId === 1 
+                && !Dados.apolices[j].is_deleted) {
 
                 contador++;
-                somaValores += dados.apolices[j].valorSegurado;
+                somaValores += Dados.apolices[j].valorSegurado;
                 existemApolicesAtivas = true;
             }
         }
@@ -148,14 +148,14 @@ function mostrarSeguradoraComMaisApolices() {
     let maxApolices = 0;
     let melhorSeguradora = null;
 
-    for (i = 0; i < dados.seguradoras.length; i++) {
+    for (i = 0; i < Dados.seguradoras.length; i++) {
         let contador = 0;
 
-        for (j = 0; j < dados.apolices.length; j++) {
+        for (j = 0; j < Dados.apolices.length; j++) {
             if (
-                dados.apolices[j].seguradoraId === dados.seguradoras[i].id &&
-                dados.apolices[j].estadoId === 1 &&
-                !dados.apolices[j].is_deleted
+                Dados.apolices[j].seguradoraId === Dados.seguradoras[i].id &&
+                Dados.apolices[j].estadoId === 1 &&
+                !Dados.apolices[j].is_deleted
             ) {
                 contador++;
             }
