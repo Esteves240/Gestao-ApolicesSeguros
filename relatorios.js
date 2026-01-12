@@ -66,7 +66,7 @@ function relatorioPorSeguradora() {
 
     for (i = 0; i < Dados.seguradoras.length; i++) {
         let totalSeg = 0;
-        let encontrou = false;
+        let existemApolicesAtivas = false;
 
         console.log("Seguradora: " + Dados.seguradoras[i].nome);
         for (j = 0; j < apolice.length; j++) {
@@ -82,25 +82,19 @@ function relatorioPorSeguradora() {
 
                 totalSeg += premioAnual;
                 totalGeral += premioAnual;
-                encontrou = true;
+                existemApolicesAtivas = true;
             }
         }
 
-        if (!encontrou) {
-            console.log("  (Sem apólices ativas)");
+        if (!existemApolicesAtivas) {
+            console.log("(Sem apólices ativas)");
         }
 
-        console.log(
-            "  Total de prémios anuais desta seguradora: " +
-            totalSeg.toFixed(2) + " €\n"
-        );
+        console.log("  Total de prémios anuais desta seguradora: " + totalSeg.toFixed(2) + " €\n");
     }
 
     console.log("------------------------------------");
-    console.log(
-        "TOTAL GERAL DE PRÉMIOS ANUAIS: " +
-        totalGeral.toFixed(2) + " €"
-    );
+    console.log("TOTAL GERAL DE PRÉMIOS ANUAIS: " + totalGeral.toFixed(2) + " €");
     console.log("------------------------------------\n");
 }
 
@@ -167,8 +161,10 @@ function relatorioEntidades() {
     console.log(" (APÓLICES ATIVAS)")
     console.log("====================================\n");
     console.log("1 - Relatório de Entidades (Tomadores)  ||  2 - Relatório de Entidades (Segurados) ");
+
     let opcao = prompt("Opção: ");
     let entidadesMostradas = [];
+    let existemApolicesAtivas = false
     
     if (opcao === "1") {
 
@@ -188,6 +184,7 @@ function relatorioEntidades() {
         if (tomador && entidadesMostradas.indexOf("T" + tomador.id) === -1) {       //verifica se já foi mostrada
             mostrarEntidadeTomador(tomador);                                              //mostra a entidade
             entidadesMostradas.push("T" + tomador.id);                            //regista que já foi mostrada
+            existemApolicesAtivas = true
         }
     }
     } else if (opcao === "2") {
@@ -205,11 +202,16 @@ function relatorioEntidades() {
             if (segurado && entidadesMostradas.indexOf("S" + segurado.id) === -1) {
                 mostrarEntidadeSegurado(segurado);
                 entidadesMostradas.push("S" + segurado.id);
+                existemApolicesAtivas = true
             }
         }
     } else {
 	console.log("Opção inválida!");
+    return
 }
+    if (!existemApolicesAtivas) {
+        console.log("(Sem apólices ativas)");
+    }
 }
 
 
